@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nhà Xinh Mỗi Ngày — Sổ tay đồ gia dụng</title>
+<meta name="description" content="Những món đồ gia dụng mình đã dùng thật và thấy đáng tiền, kèm cả nhược điểm.">
+<meta property="og:title" content="Nhà Xinh Mỗi Ngày — Sổ tay đồ gia dụng">
+<meta property="og:description" content="Những món đồ gia dụng mình đã dùng thật và thấy đáng tiền, kèm cả nhược điểm.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M18 44 L50 16 L82 44' fill='none' stroke='%23C0703F' stroke-width='9' stroke-linecap='round'/%3E%3Cpath d='M26 44 V82 H74 V44' fill='none' stroke='%236F8064' stroke-width='9' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --paper:#FBF1E6; --paper-deep:#F3E3D0; --card:#FFFCF7;
+  --ink:#3D3428; --ink-soft:#6E6152; --ink-faint:#938573;
+  --terra:#C0703F; --terra-deep:#A85C2F; --sage:#6F8064;
+  --rule:#DFC9AE; --ok:#4F7A4F;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --paper:#191511; --paper-deep:#241E17; --card:#241E18;
+    --ink:#F0E6DA; --ink-soft:#BBAC9A; --ink-faint:#8C7E6E;
+    --terra:#E3996A; --terra-deep:#EFB389; --sage:#9DB18F;
+    --rule:#3A3028; --ok:#8FC08F;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --paper:#191511; --paper-deep:#241E17; --card:#241E18;
+  --ink:#F0E6DA; --ink-soft:#BBAC9A; --ink-faint:#8C7E6E;
+  --terra:#E3996A; --terra-deep:#EFB389; --sage:#9DB18F;
+  --rule:#3A3028; --ok:#8FC08F;
+}
+html{scroll-padding-top: env(safe-area-inset-top, 0px)}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:'Be Vietnam Pro',system-ui,-apple-system,sans-serif;
+  font-weight:300; font-size:17px; line-height:1.65;
+}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+
+header{padding:40px 0 26px;text-align:center;border-bottom:1px solid var(--rule)}
+.mark{width:62px;height:62px;margin:0 auto 12px;display:block}
+h1{font-family:'Lora',Georgia,serif;font-weight:600;font-size:clamp(28px,7vw,40px);margin:0 0 4px}
+.kicker{font-family:'Lora',serif;font-style:italic;color:var(--terra);font-size:17px;margin:0 0 16px}
+.blurb{max-width:52ch;margin:0 auto;color:var(--ink-soft);font-size:16px}
+.fb-link{display:inline-block;margin-top:16px;font-size:15px;color:var(--sage);
+  text-decoration:none;border-bottom:1px solid var(--sage);padding-bottom:1px}
+.fb-link:hover,.fb-link:focus-visible{color:var(--terra);border-color:var(--terra)}
+
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--paper);
+  border-bottom:1px solid var(--rule);padding:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);
+  background:var(--paper);z-index:10}
+.tabs{display:flex;gap:4px}
+.tab{flex:1;font:inherit;font-size:15.5px;font-weight:500;color:var(--ink-soft);
+  background:transparent;border:0;border-bottom:3px solid transparent;
+  padding:14px 8px;cursor:pointer}
+.tab[aria-selected="true"]{color:var(--terra-deep);border-bottom-color:var(--terra)}
+.tab:focus-visible{outline:2px solid var(--sage);outline-offset:-3px}
+
+.chips{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding:11px 0}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;font:inherit;font-size:14px;font-weight:400;color:var(--ink-soft);
+  background:transparent;border:1px solid var(--rule);border-radius:99px;
+  padding:6px 14px;cursor:pointer;white-space:nowrap}
+.chip:hover{border-color:var(--terra);color:var(--terra)}
+.chip[aria-pressed="true"]{background:var(--terra);border-color:var(--terra);color:#fff;font-weight:500}
+.chip:focus-visible{outline:2px solid var(--sage);outline-offset:2px}
+
+main{padding:24px 0 10px}
+.panel[hidden]{display:none}
+
+/* ---- products ---- */
+.group-title{font-family:'Lora',serif;font-weight:600;font-size:22px;margin:24px 0 4px;
+  display:flex;align-items:baseline;gap:12px}
+.group-title::after{content:"";flex:1;height:1px;background:var(--rule)}
+.group-note{color:var(--ink-soft);font-size:15px;margin:0 0 14px}
+.item{display:block;background:var(--card);border:1px solid var(--rule);border-radius:14px;
+  padding:18px 18px 16px;margin-bottom:14px;text-decoration:none;color:inherit}
+.item:hover{border-color:var(--terra)}
+.item:focus-visible{outline:2px solid var(--sage);outline-offset:3px}
+.item-top{display:flex;align-items:flex-start;gap:14px}
+.glyph{flex:0 0 auto;width:44px;height:44px;border-radius:10px;background:var(--paper-deep);
+  display:grid;place-items:center}
+.glyph svg{width:26px;height:26px}
+.item-head{flex:1;min-width:0}
+.item-name{font-family:'Lora',serif;font-weight:600;font-size:19px;line-height:1.3;margin:0 0 3px}
+.price{color:var(--terra);font-weight:500;font-size:15px}
+.price .strike{color:var(--ink-soft);font-weight:300;text-decoration:line-through;margin-left:7px;font-size:14px}
+.note{margin:11px 0 0;color:var(--ink-soft);font-size:15.5px}
+.tags{margin-top:11px;display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12.5px;color:var(--sage);border:1px solid var(--rule);border-radius:6px;
+  padding:2px 8px;background:var(--paper-deep)}
+.go{margin-top:13px;display:inline-block;font-size:15px;font-weight:500;color:var(--terra-deep);
+  border-bottom:1.5px solid var(--terra);padding-bottom:1px}
+
+footer{margin-top:32px;padding:24px 0 40px;border-top:1px solid var(--rule);
+  color:var(--ink-soft);font-size:14.5px}
+.disclosure{background:var(--paper-deep);border:1px solid var(--rule);border-radius:12px;
+  padding:14px 16px;margin-bottom:18px;font-size:14.5px;line-height:1.6}
+footer a{color:var(--sage)}
+@media (max-width:420px){ body{font-size:16px} .item{padding:16px 15px 14px} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important;animation:none!important} }
+
+.count{color:var(--ink-faint);font-size:14px;margin:0 0 6px}
+.chip .n{opacity:.7;margin-left:4px;font-size:12.5px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <svg class="mark" viewBox="0 0 100 100" aria-hidden="true">
+      <path d="M18 44 L50 16 L82 44" fill="none" stroke="#C0703F" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M26 44 V82 H74 V44" fill="none" stroke="#6F8064" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M43 82 V62 H57 V82" fill="none" stroke="#6F8064" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M50 36 c-3-5-11-3-11 3 0 5 7 9 11 13 4-4 11-8 11-13 0-6-8-8-11-3Z" fill="#C0703F"/>
+    </svg>
+    <h1>Nhà Xinh Mỗi Ngày</h1>
+    <p class="kicker">Sổ tay đồ gia dụng</p>
+    <p class="blurb">Đây là chỗ mình ghi lại những món đã mua, đã dùng thật, và thấy đáng tiền. Món nào có nhược điểm mình cũng nói luôn.</p>
+    <a class="fb-link" href="#" data-fb target="_blank" rel="noopener">Xem thêm mẹo trên Facebook</a>
+  </div>
+</header>
+
+<nav>
+  <div class="wrap">
+    <div class="chips" id="chips" role="group" aria-label="Lọc theo nhóm"></div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+    <section id="panel-do" aria-live="polite"></section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="disclosure">
+      Trang này có chứa liên kết tiếp thị liên kết. Nếu bạn mua hàng qua các liên kết ở đây,
+      mình có thể nhận được một khoản hoa hồng nhỏ từ người bán — <strong>giá bạn trả không thay đổi</strong>.
+      Mình chỉ giới thiệu những món đã dùng hoặc tìm hiểu kỹ.
+    </p>
+    <p>Giá và khuyến mãi thay đổi theo từng thời điểm, bạn kiểm tra lại trên trang bán hàng trước khi đặt nhé.</p>
+    <p>© <span id="year"></span> Nhà Xinh Mỗi Ngày · <a href="#" data-fb target="_blank" rel="noopener">Facebook</a></p>
+  </div>
+</footer>
+
+<script>
+/* ===== Link Trang Facebook của bạn: dán vào giữa hai dấu nháy ===== */
+const FB_URL = "";
+
+/* ===== SẢN PHẨM: sửa ở đây để thêm / bớt (giữ nguyên định dạng) ===== */
+const NHOM = [
+  { id:"bep",      ten:"Bếp núc",   mota:"Mấy món khiến việc nấu nướng nhẹ đi thấy rõ." },
+  { id:"donDep",   ten:"Dọn dẹp",   mota:"Đồ dùng giúp lau chùi nhanh và đỡ mệt hơn." },
+  { id:"sapXep",   ten:"Sắp xếp",   mota:"Giữ đồ đạc có chỗ cố định, tìm là thấy." },
+  { id:"giatPhoi", ten:"Giặt phơi", mota:"Chỗ treo, chỗ phơi gọn gàng cho nhà nhỏ." },
+  { id:"khongGian", ten:"Không gian sống", mota:"Cây xanh, rèm cửa — mấy thứ làm nhà dễ chịu hơn." }
+];
+
+const SAN_PHAM = [
+  {
+    ten:"Nồi chiên không dầu Gaabor 2L",
+    gia:"619.000đ",
+    giaCu:"",
+    nhom:"bep",
+    icon:"noi",
+    ghiChu:"Bản mini, hợp nhà 1–2 người hoặc bếp nhỏ. Nóng nhanh, khay chống dính rửa rất nhàn. Nhược điểm: hơi ồn khi chạy hết công suất, và 2L thì nhà đông người sẽ phải chia mẻ.",
+    the:["Hợp nhà 1–2 người","Dễ vệ sinh"],
+    link:"https://s.shopee.vn/60RSvz27ib"
+  },
+  {
+    ten:"Baking soda Caster Daily (hộp 227g – 907g)",
+    gia:"Từ 23.250đ",
+    giaCu:"",
+    nhom:"donDep",
+    icon:"hop",
+    ghiChu:"Mua một hộp to dùng được rất lâu: để mở nắp trong tủ lạnh thì khử mùi, pha với nước thì cọ bồn rửa và vết ố. Nhớ thay hộp trong tủ lạnh mỗi tháng một lần. Lưu ý từ đánh giá người mua: thỉnh thoảng túi bên trong bị rách khi vận chuyển làm bột đổ ra hộp, nên kiểm tra ngay khi nhận.",
+    the:["Dùng được nhiều việc","Rẻ","4.9★ · 70k+ đã bán"],
+    link:"https://s.shopee.vn/6Alr4jeHnM"
+  },
+  {
+    ten:"Hộp nhựa dẻo Song Long nắp chặt",
+    gia:"52.000đ",
+    giaCu:"",
+    nhom:"sapXep",
+    icon:"hop",
+    ghiChu:"Thứ giúp tủ lạnh hết ám mùi nhanh nhất, vì mùi không lan từ hộp này sang hộp kia. Nên chọn bộ cùng kiểu để xếp chồng cho gọn. Mẫu này rất ít bị chê; có một vài người nói nắp hơi lỏng ở một số hộp, nên đậy thử khi nhận.",
+    the:["Chống ám mùi","Xếp chồng được","4.9★ · 100k+ đã bán"],
+    link:"https://s.shopee.vn/60SQsQev8L"
+  },
+  {
+    ten:"Kệ xoay 360° Ecoco (khay gia vị, đồ đa năng)",
+    gia:"126.000đ",
+    giaCu:"",
+    nhom:"sapXep",
+    icon:"ke",
+    ghiChu:"Tận dụng được góc chết trên bàn bếp. Xoay một vòng là thấy hết lọ, không phải bới tìm nữa. Gần như không có đánh giá xấu; chỉ lác đác trường hợp khay xoay không trơn, nên thử xoay khi vừa nhận.",
+    the:["Tiết kiệm chỗ","5.0★ · 7k+ đã bán"],
+    link:"https://s.shopee.vn/6VOhTLd17S"
+  },
+  {
+    ten:"Khăn lau microfiber đa năng",
+    gia:"16.500đ",
+    giaCu:"",
+    nhom:"donDep",
+    icon:"khan",
+    ghiChu:"Nên mua bộ nhiều màu rồi phân công mỗi màu một khu: bếp, bàn ăn, nhà tắm. Tránh dùng chung một cái cho mọi bề mặt. Người mua chủ yếu chê shop đôi khi giao sai màu, nên ghi rõ màu khi đặt.",
+    the:["Phân màu theo khu","4.9★ · 3 triệu+ đã bán"],
+    link:"https://s.shopee.vn/6L5HH2deSR"
+  },
+  {
+    ten:"Chai xịt phun sương nhựa PET (5ml – 300ml)",
+    gia:"17.500đ",
+    giaCu:"",
+    nhom:"donDep",
+    icon:"chai",
+    ghiChu:"Pha sẵn giấm loãng hoặc nước baking soda vào chai xịt để cạnh bếp, bẩn đâu xịt đó. Tiện hơn hẳn việc pha lại mỗi lần. Nhớ chọn loại 300ml cho việc lau dọn. Một số người nhận chai bị trầy hoặc bẩn, nên rửa lại trước khi dùng.",
+    the:["Tiện dùng hằng ngày","4.9★ · 1 triệu+ đã bán"],
+    link:"https://s.shopee.vn/5VWAHVgp9I"
+  },
+  {
+    ten:"Móc dán tường inox 304 (combo 50 cái)",
+    gia:"15.399đ",
+    giaCu:"",
+    nhom:"sapXep",
+    icon:"moc",
+    ghiChu:"Không cần khoan, dán là treo được khăn, chìa khóa, túi nhỏ. Mẫu bán chạy nhất trong nhóm móc dán và gần như không có đánh giá xấu. Mẹo: lau sạch, khô mặt tường và đợi vài tiếng mới treo đồ để keo bám chắc.",
+    the:["Không khoan","5.0★ · 1 triệu+ đã bán"],
+    link:"https://s.shopee.vn/40hMUmi5Cd"
+  },
+  {
+    ten:"Kệ gỗ treo tường FIVO FB40",
+    gia:"120.000đ",
+    giaCu:"",
+    nhom:"sapXep",
+    icon:"ke",
+    ghiChu:"Kệ treo tường không cần khoan, hợp để sách, chậu cây nhỏ, đồ trang trí. Hơn 7 nghìn đánh giá mà tỉ lệ chê dưới 1%. Một vài người nói ván hơi mỏng và kệ bị sập khi đặt đồ nặng, nên chỉ để đồ nhẹ.",
+    the:["Không khoan","Đồ nhẹ","4.9★ · 100k+ đã bán"],
+    link:"https://s.shopee.vn/5AtJsvddps"
+  },
+  {
+    ten:"Hộp đựng đồ gầm giường có bánh xe TOSHUDO",
+    gia:"335.104đ",
+    giaCu:"",
+    nhom:"sapXep",
+    icon:"hop",
+    ghiChu:"Tận dụng khoảng trống dưới gầm giường để cất chăn mền, quần áo trái mùa; có bánh xe nên kéo ra vào nhẹ. Rất ít bị chê, chủ yếu là lâu lâu bị gãy chốt khi vận chuyển. Nhớ đo chiều cao gầm giường trước khi đặt.",
+    the:["Có bánh xe","Cất đồ trái mùa","4.9★ · 2k+ đã bán"],
+    link:"https://s.shopee.vn/50ZtgceHAr"
+  },
+  {
+    ten:"Giá treo / kệ phơi quần áo thanh đơn kim loại",
+    gia:"100.000đ",
+    giaCu:"",
+    nhom:"giatPhoi",
+    icon:"ke",
+    ghiChu:"Giá đứng một thanh, rẻ, dựng nhanh, hợp phơi đồ nhẹ trong nhà hoặc treo quần áo mặc dở. Tỉ lệ chê rất thấp, nhưng người chê đều nói khung khá nhẹ, treo nhiều đồ dày dễ đổ, nên đừng phơi đồ nặng.",
+    the:["Giá rẻ","Đồ nhẹ","4.9★ · 10k+ đã bán"],
+    link:"https://s.shopee.vn/4qGTUJeuVq"
+  },
+  {
+    ten:"Khay chia ngăn kéo SUNBEAM (dao, thìa, đũa)",
+    gia:"69.000đ",
+    giaCu:"",
+    nhom:"sapXep",
+    icon:"ke",
+    ghiChu:"Chia ngăn kéo bếp thành từng ô cho dao, thìa, đũa, hết cảnh bới tìm. Lưu ý từ đánh giá người mua: khay không có chốt giữ nên có thể trượt khi kéo ngăn, và nhựa hơi mỏng. Nhớ đo lòng ngăn kéo trước khi đặt.",
+    the:["Gọn ngăn kéo","4.9★ · 7k+ đã bán"],
+    link:"https://s.shopee.vn/2gByw2rZJl"
+  },
+  {
+    ten:"Thảm diatomite chống trượt nhà tắm",
+    gia:"23.700đ",
+    giaCu:"",
+    nhom:"donDep",
+    icon:"khan",
+    ghiChu:"Thảm đá thấm nước nhanh khô, đặt trước cửa nhà tắm. Bán rất chạy, nhưng tỉ lệ đánh giá xấu khoảng 3,7%, cao hơn các món khác trong sổ tay; có người nhận sai cỡ, nên ghi rõ kích thước khi đặt.",
+    the:["Nhanh khô","4.9★ · 1 triệu+ đã bán"],
+    link:"https://s.shopee.vn/9062VrOUUP"
+  },
+  {
+    ten:"Cây gạt nước lau kính cầm tay Deli",
+    gia:"32.830đ",
+    giaCu:"",
+    nhom:"donDep",
+    icon:"khan",
+    ghiChu:"Gạt một lượt sau khi tắm là kính và sàn hết đọng nước, lâu ố. Một số người chê lưỡi hơi mềm, gạt có thể còn vệt, nên gạt chậm và dứt khoát một chiều.",
+    the:["Nhà tắm khô","4.9★ · 10k+ đã bán"],
+    link:"https://s.shopee.vn/BUdxTNqiU"
+  },
+  {
+    ten:"Gói hút ẩm silica gel đa năng",
+    gia:"49.000đ",
+    giaCu:"",
+    nhom:"giatPhoi",
+    icon:"hop",
+    ghiChu:"Bỏ vào tủ quần áo, túi cất chăn ga trái mùa hoặc tủ giày để chống ẩm mốc mùa nồm. Rất ít bị chê; vài người nói nhận thiếu gam so với đơn đặt, nên kiểm tra khi nhận.",
+    the:["Chống ẩm mốc","5.0★ · 300k+ đã bán"],
+    link:"https://s.shopee.vn/30opLqZbg1"
+  },
+  {
+    ten:"Chậu nhựa dẻo có lỗ thoát nước",
+    gia:"7.900đ",
+    giaCu:"",
+    nhom:"khongGian",
+    icon:"cay",
+    ghiChu:"Chậu rẻ, có sẵn lỗ thoát nước — thứ quan trọng nhất để cây không úng rễ. Hợp để giâm cành, nhân giống. Nhựa khá mỏng; có vài đơn giao thiếu số lượng.",
+    the:["Có lỗ thoát nước","4.9★ · 90k+ đã bán"],
+    link:"https://s.shopee.vn/9pf9VOLJnc"
+  },
+  {
+    ten:"Rèm KB01 vải gấm ngăn nhiệt (may theo kích thước)",
+    gia:"90.850đ",
+    giaCu:"",
+    nhom:"khongGian",
+    icon:"ke",
+    ghiChu:"Loại rèm ghi rõ ngăn nhiệt, không phải rèm che sáng thường. Kéo rèm từ trưa để chặn nắng trước khi tường kịp nóng. Người mua chê chủ yếu ở khâu may: có lần vải mỏng hơn lần trước, hai tấm lệch màu hoặc lệch chiều dài.",
+    the:["Chống nóng","4.9★ · 40k+ đã bán"],
+    link:"https://s.shopee.vn/2LZ8b9Eb5t"
+  },
+  {
+    ten:"Thớt gỗ nghiến nguyên khối, không tâm",
+    gia:"175.000đ",
+    giaCu:"",
+    nhom:"bep",
+    icon:"hop",
+    ghiChu:"Gỗ nghiến nguyên khối, không tâm nên ít nứt hơn thớt có tâm. Rửa xong dựng đứng cho khô, thoa chút dầu ăn mỗi tháng. Lời chê chủ yếu: có lần giao độ dày mỏng hơn loại đã đặt, và vài tấm có vết rạn — nên kiểm tra kỹ khi nhận.",
+    the:["Gỗ nguyên khối","4.9★ · 6k+ đã bán"],
+    link:"https://s.shopee.vn/3LRgRrdtAt"
+  },
+  {
+    ten:"Túi vải Oxford gấp gọn đi chợ, dung tích lớn",
+    gia:"61.560đ",
+    giaCu:"",
+    nhom:"bep",
+    icon:"hop",
+    ghiChu:"Gấp nhỏ bỏ túi xách, đi chợ đỡ phải lấy túi nilon. Vải Oxford dày, chống nước nhẹ. Rất ít bị chê (dưới 1% đánh giá xấu).",
+    the:["Giảm túi nilon","4.9★ · 1k+ đã bán"],
+    link:"https://s.shopee.vn/40hNF5bLp5"
+  },
+  {
+    ten:"Bàn chải vệ sinh khe hở, góc chết (combo 5 cây)",
+    gia:"18.763đ",
+    giaCu:"",
+    nhom:"donDep",
+    icon:"khan",
+    ghiChu:"Đầu nhỏ, lông cứng, chui được vào ray cửa, khe bếp, góc nhà tắm. Giá rẻ nên đừng kỳ vọng bền lâu: lời chê chủ yếu là lông dễ cong và có cây bị gãy sau vài lần dùng mạnh.",
+    the:["Khe kẽ","4.9★ · 200k+ đã bán"],
+    link:"https://s.shopee.vn/4LKDdha597"
+  },
+  {
+    ten:"Đèn học kẹp bàn PIXAR bóng LED chống chói",
+    gia:"169.000đ",
+    giaCu:"",
+    nhom:"khongGian",
+    icon:"cay",
+    ghiChu:"Kẹp vào cạnh bàn nên không chiếm mặt bàn, cần đèn chỉnh được hướng chiếu để không rọi thẳng vào mắt. Tỉ lệ chê rất thấp; vài người nói đèn hơi nóng sau một lúc dùng, hoặc nhận bóng lỗi — nên bật thử ngay khi nhận.",
+    the:["Chống chói","5.0★ · 100k+ đã bán"],
+    link:"https://s.shopee.vn/4Vddq0ZRo8"
+  },
+  {
+    ten:"Ổ cắm điện TESSAN chịu tải 2500W, dây 5m, có USB",
+    gia:"512.999đ",
+    giaCu:"",
+    nhom:"khongGian",
+    icon:"hop",
+    ghiChu:"Mình chọn mẫu này vì trong các đánh giá xấu không có ai báo nóng chảy hay chập điện — điều đáng lo nhất với ổ cắm. Lời chê chủ yếu là giao nhầm loại cổng USB. Lưu ý chung: không cắm nhiều đồ công suất lớn (bàn là, ấm siêu tốc, lò sưởi) cùng lúc vào một ổ nối dài.",
+    the:["Chịu tải 2500W","4.9★ · 10k+ đã bán"],
+    link:"https://s.shopee.vn/4B0nROaiU6"
+  },
+  {
+    ten:"Băng keo nhám chống trượt cầu thang",
+    gia:"29.800đ",
+    giaCu:"",
+    nhom:"khongGian",
+    icon:"ke",
+    ghiChu:"Dán lên mép bậc cầu thang để chân bám hơn, nhất là nhà có người già và trẻ nhỏ. Lau sạch, khô mặt bậc trước khi dán. Lời chê: băng khá mỏng và dính chặt nên khó gỡ ra sau này.",
+    the:["An toàn cầu thang","4.9★ · 10k+ đã bán"],
+    link:"https://s.shopee.vn/5AtKdG9l82"
+  }
+];
+
+/* ===== KHÔNG CẦN SỬA TỪ ĐÂY ===== */
+const ICONS = {
+  noi:'<svg viewBox="0 0 24 24" fill="none" stroke="#C0703F" stroke-width="1.7" stroke-linecap="round"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M8 8V6M16 8V6M9 19v1.5M15 19v1.5"/></svg>',
+  hop:'<svg viewBox="0 0 24 24" fill="none" stroke="#C0703F" stroke-width="1.7" stroke-linecap="round"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M3 5h18v3H3zM10 13h4"/></svg>',
+  chai:'<svg viewBox="0 0 24 24" fill="none" stroke="#C0703F" stroke-width="1.7" stroke-linecap="round"><path d="M10 3h4v3l2 3v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V9l2-3z"/><path d="M8 13h8"/></svg>',
+  khan:'<svg viewBox="0 0 24 24" fill="none" stroke="#6F8064" stroke-width="1.7" stroke-linecap="round"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M5 13h14M5 16h14"/></svg>',
+  ke:'<svg viewBox="0 0 24 24" fill="none" stroke="#6F8064" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h16M4 13h16M4 19h16"/><path d="M8 4v3M14 10v3M10 16v3"/></svg>',
+  cay:'<svg viewBox="0 0 24 24" fill="none" stroke="#6F8064" stroke-width="1.7" stroke-linecap="round"><path d="M12 21V9"/><path d="M12 13c-4 0-6-3-6-6 3 0 6 2 6 6zM12 11c4 0 6-3 6-6-3 0-6 2-6 6z"/><path d="M8 21h8"/></svg>',
+  moc:'<svg viewBox="0 0 24 24" fill="none" stroke="#6F8064" stroke-width="1.7" stroke-linecap="round"><rect x="8" y="3" width="8" height="6" rx="1.5"/><path d="M12 9v6a3 3 0 1 1-3-3"/></svg>'
+};
+
+
+let fDo="tatCa";
+function esc(s){return String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));}
+function chips(){
+  const el=document.getElementById('chips');
+  const cs=[{id:"tatCa",ten:"Tất cả",n:SAN_PHAM.length},...NHOM.map(n=>({...n,n:SAN_PHAM.filter(s=>s.nhom===n.id).length})).filter(n=>n.n)];
+  el.innerHTML=cs.map(n=>`<button class="chip" data-id="${n.id}" aria-pressed="${n.id===fDo}">${esc(n.ten)}<span class="n">${n.n}</span></button>`).join('');
+  el.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{fDo=b.dataset.id;chips();drawDo();window.scrollTo({top:document.querySelector('nav').offsetTop,behavior:'smooth'});});
+}
+function drawDo(){
+  const el=document.getElementById('panel-do');
+  const gs=fDo==="tatCa"?NHOM:NHOM.filter(n=>n.id===fDo);
+  let h="",tot=0;
+  gs.forEach(n=>{
+    const ds=SAN_PHAM.filter(s=>s.nhom===n.id);
+    if(!ds.length)return;
+    tot+=ds.length;
+    h+=`<h2 class="group-title">${esc(n.ten)}</h2><p class="group-note">${esc(n.mota)}</p>`;
+    h+=ds.map(sp=>{
+      const noLink=!sp.link||sp.link.startsWith("#");
+      const gia=sp.gia?`<span class="price">${esc(sp.gia)}${sp.giaCu?`<span class="strike">${esc(sp.giaCu)}</span>`:""}</span>`:"";
+      const tg=(sp.the||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('');
+      const tag=noLink?'div':'a';
+      return `<${tag} class="item" ${noLink?'':`href="${esc(sp.link)}" target="_blank" rel="nofollow sponsored noopener"`}>
+        <span class="item-top"><span class="glyph" aria-hidden="true">${ICONS[sp.icon]||ICONS.hop}</span>
+        <span class="item-head"><span class="item-name">${esc(sp.ten)}</span><br>${gia}</span></span>
+        <p class="note">${esc(sp.ghiChu)}</p>
+        ${tg?`<span class="tags">${tg}</span>`:''}
+        <span class="go">${noLink?"Sắp có link":"Xem trên Shopee →"}</span></${tag}>`;
+    }).join('');
+  });
+  el.innerHTML=tot?`<p class="count">${tot} món</p>`+h:`<p class="note">Chưa có món nào trong mục này.</p>`;
+}
+document.querySelectorAll('[data-fb]').forEach(a=>{ if(FB_URL){a.href=FB_URL;a.target='_blank';a.rel='noopener';} else a.remove(); });
+const fbText=document.querySelector('footer p:last-child'); if(fbText&&!FB_URL) fbText.innerHTML=fbText.innerHTML.replace(/\s*·\s*$/,'');
+document.getElementById('year').textContent=new Date().getFullYear();
+chips(); drawDo();
+</script>
+</body>
+</html>
