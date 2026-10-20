@@ -112,6 +112,10 @@ footer a{color:var(--sage)}
 @media (prefers-reduced-motion:reduce){ *{transition:none!important;animation:none!important} }
 
 .count{color:var(--ink-faint);font-size:14px;margin:0 0 6px}
+
+/* chips: xuống dòng trên màn hình rộng; điện thoại thì vuốt ngang, có mờ dần báo còn tiếp */
+@media (min-width:600px){ .chips{flex-wrap:wrap;overflow:visible} }
+@media (max-width:599px){ .chips{-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent);padding-right:28px} }
 .chip .n{opacity:.7;margin-left:4px;font-size:12.5px}
 </style>
 </head>
@@ -127,7 +131,7 @@ footer a{color:var(--sage)}
     </svg>
     <h1>Nhà Xinh Mỗi Ngày</h1>
     <p class="kicker">Sổ tay đồ gia dụng</p>
-    <p class="blurb">Đây là chỗ mình ghi lại những món đã mua, đã dùng thật, và thấy đáng tiền. Món nào có nhược điểm mình cũng nói luôn.</p>
+    <p class="blurb">Đây là chỗ mình ghi lại những món đã dùng thật hoặc đã tìm hiểu kỹ — chọn loại 4.9★ trở lên, bán chạy, đọc cả đánh giá chê — trước khi giới thiệu. Món nào có nhược điểm mình cũng nói luôn.</p>
     <a class="fb-link" href="#" data-fb target="_blank" rel="noopener">Xem thêm mẹo trên Facebook</a>
   </div>
 </header>
@@ -166,7 +170,10 @@ const NHOM = [
   { id:"donDep",   ten:"Dọn dẹp",   mota:"Đồ dùng giúp lau chùi nhanh và đỡ mệt hơn." },
   { id:"sapXep",   ten:"Sắp xếp",   mota:"Giữ đồ đạc có chỗ cố định, tìm là thấy." },
   { id:"giatPhoi", ten:"Giặt phơi", mota:"Chỗ treo, chỗ phơi gọn gàng cho nhà nhỏ." },
-  { id:"khongGian", ten:"Không gian sống", mota:"Cây xanh, rèm cửa — mấy thứ làm nhà dễ chịu hơn." }
+  { id:"khongGian", ten:"Không gian sống", mota:"Cây xanh, rèm cửa — mấy thứ làm nhà dễ chịu hơn." },
+  { id:"phongNgu", ten:"Phòng ngủ", mota:"Gối, nệm, rèm, đèn ngủ — cho giấc ngủ ngon hơn." },
+  { id:"treEm", ten:"Đồ cho bé", mota:"Giúp bé tự lấy đồ, tự cất đồ chơi." },
+  { id:"anToan", ten:"An toàn trong nhà", mota:"Cho nhà có trẻ nhỏ hoặc người lớn tuổi." }
 ];
 
 const SAN_PHAM = [
@@ -389,7 +396,82 @@ const SAN_PHAM = [
     ghiChu:"Dán lên mép bậc cầu thang để chân bám hơn, nhất là nhà có người già và trẻ nhỏ. Lau sạch, khô mặt bậc trước khi dán. Lời chê: băng khá mỏng và dính chặt nên khó gỡ ra sau này.",
     the:["An toàn cầu thang","4.9★ · 10k+ đã bán"],
     link:"https://s.shopee.vn/5AtKdG9l82"
-  }
+  },
+  /* ----- Các món từ Lịch nội dung, Khởi động nhanh, Đợt sale ----- */
+  {"ten": "Gối cao su non EMA công thái học", "gia": "185.000đ", "giaCu": "", "nhom": "phongNgu", "icon": "hop", "ghiChu": "Ruột cao su non, dáng công thái học. Gối hơi thấp nên hợp người hay nằm ngửa.", "the": ["4.9★ · 100k+ đã bán"], "link": "https://s.shopee.vn/9zyb7IdHhD"},
+  {"ten": "Gối cao su non Cecila gel lạnh", "gia": "225.000đ", "giaCu": "", "nhom": "phongNgu", "icon": "hop", "ghiChu": "Cao su non có lớp gel mát. Gối cứng và cao hơn, hợp người nằm nghiêng.", "the": ["5.0★ · 70k+ đã bán"], "link": "https://s.shopee.vn/9pfAuzdv2C"},
+  {"ten": "Nệm cao su non American", "gia": "510.000đ", "giaCu": "", "nhom": "phongNgu", "icon": "hop", "ghiChu": "Nệm cao su non, rất ít đánh giá chê. Nhớ chọn đúng kích thước giường trước khi đặt.", "the": ["5.0★ · 10k+ đã bán"], "link": "https://s.shopee.vn/9fLkigeYNB"},
+  {"ten": "Nệm topper 9cm bông microfiber", "gia": "157.000đ", "giaCu": "", "nhom": "phongNgu", "icon": "khan", "ghiChu": "Tấm làm êm dày 9cm trải lên nệm cũ. Một số người thấy xẹp bớt sau khi giặt.", "the": ["4.9★ · 700k+ đã bán"], "link": "https://s.shopee.vn/9V2KWNfBiA"},
+  {"ten": "Ấm siêu tốc Gaabor 2.1L", "gia": "385.000đ", "giaCu": "", "nhom": "bep", "icon": "noi", "ghiChu": "Ấm 2.1L lòng inox, tự ngắt khi sôi. Cùng hãng với nồi chiên Gaabor trong sổ tay.", "the": ["4.9★ · 10k+ đã bán"], "link": "https://s.shopee.vn/9KiuK4fp39"},
+  {"ten": "Nồi áp suất Elmich PCE inox 304", "gia": "1.497.000đ", "giaCu": "", "nhom": "bep", "icon": "noi", "ghiChu": "Nồi áp suất inox 304 của Elmich. Đồ có áp suất nên mình ưu tiên hàng có thương hiệu; lời chê chủ yếu về đóng gói.", "the": ["4.9★ · 2k+ đã bán"], "link": "https://s.shopee.vn/9063vUFKqM"},
+  {"ten": "Kéo đa năng Sunhouse KS-SC225 có nắp", "gia": "105.000đ", "giaCu": "", "nhom": "bep", "icon": "moc", "ghiChu": "Kéo đa năng có nắp đậy, cắt gà, rau củ, mở bao bì đều được.", "the": ["4.9★ · 1k+ đã bán"], "link": "https://s.shopee.vn/9APU7nEhVP"},
+  {"ten": "Cân tiểu ly điện tử 5kg/0.1g", "gia": "69.000đ", "giaCu": "", "nhom": "bep", "icon": "hop", "ghiChu": "Cân 5kg, chia vạch 0.1g, bảo hành 1 năm. Lác đác có người gặp cân lệch.", "the": ["5.0★ · 400k+ đã bán"], "link": "https://s.shopee.vn/9KiuK6E4AS"},
+  {"ten": "Kẹp gắp silicone Simplus SPJA001", "gia": "99.000đ", "giaCu": "", "nhom": "bep", "icon": "moc", "ghiChu": "Đầu silicone không xước chảo chống dính. Lúc mới dùng có người thấy mùi nhựa nhẹ.", "the": ["4.9★ · 10k+ đã bán"], "link": "https://s.shopee.vn/9V2KWPDQpV"},
+  {"ten": "Máy hút bụi cầm tay không dây dodoto", "gia": "495.000đ", "giaCu": "", "nhom": "donDep", "icon": "chai", "ghiChu": "Máy hút bụi không dây, nhỏ gọn để hút nhanh mỗi ngày. Nhược điểm: nút cao su hay rơi, lực hút vừa phải.", "the": ["4.9★ · 40k+ đã bán"], "link": "https://s.shopee.vn/9fLkiiCnUY"},
+  {"ten": "Bàn ủi hơi nước Sunhouse SHD2065 1600W", "gia": "280.000đ", "giaCu": "", "nhom": "giatPhoi", "icon": "noi", "ghiChu": "Bàn ủi hơi nước 1600W của Sunhouse. Vài ca bị vỡ vỏ khi giao, nên quay video lúc mở hàng.", "the": ["4.9★ · 30k+ đã bán"], "link": "https://s.shopee.vn/2qVQaA3U6L"},
+  {"ten": "Máy lọc không khí Xiaomi Mi Air Purifier 4 Lite", "gia": "2.639.000đ", "giaCu": "", "nhom": "khongGian", "icon": "chai", "ghiChu": "Máy lọc không khí có màng HEPA của Xiaomi. Mẫu rẻ hơn mình thấy bị chê lọc yếu nên không chọn.", "the": ["4.9★ · 6k+ đã bán"], "link": "https://s.shopee.vn/30oqmT2qlO"},
+  {"ten": "Máy tạo ẩm phun sương 4–4.5L chạy êm", "gia": "419.000đ", "giaCu": "", "nhom": "phongNgu", "icon": "chai", "ghiChu": "Máy tạo ẩm 4–4.5L chạy êm cho phòng ngủ mùa khô. Mẫu này còn ít đánh giá.", "the": ["4.9★ · 10k+ đã bán"], "link": "https://s.shopee.vn/3B8Gym2DQR"},
+  {"ten": "Túi than tre hoạt tính khử mùi", "gia": "9.900đ", "giaCu": "", "nhom": "khongGian", "icon": "hop", "ghiChu": "Túi than tre khử mùi tủ giày, tủ quần áo, góc nhà tắm. Rẻ, gần như không ai chê.", "the": ["4.9★ · 5k+ đã bán"], "link": "https://s.shopee.vn/3LRhB51a5U"},
+  {"ten": "Dao thái Kiwi Thái Lan cán đen", "gia": "72.000đ", "giaCu": "", "nhom": "bep", "icon": "moc", "ghiChu": "Dao thái Kiwi Thái Lan, mỏng và sắc, giá mềm.", "the": ["4.9★ · 10k+ đã bán"], "link": "https://s.shopee.vn/3Vl7NO0wkX"},
+  {"ten": "Dao gọt/tỉa hoa quả KIWI", "gia": "78.000đ", "giaCu": "", "nhom": "bep", "icon": "moc", "ghiChu": "Dao gọt, tỉa hoa quả Kiwi lưỡi nhỏ, cầm vừa tay.", "the": ["4.9★ · 10k+ đã bán"], "link": "https://s.shopee.vn/40hNyJ8ji1"},
+  {"ten": "Thớt nhựa kháng khuẩn Lock&Lock / Inochi", "gia": "97.600đ", "giaCu": "", "nhom": "bep", "icon": "hop", "ghiChu": "Thớt nhựa kháng khuẩn chống trơn. Mẫu rẻ hơn hay bị chê mùi nhựa nên mình chọn loại này.", "the": ["5.0★ · 60k+ đã bán"], "link": "https://s.shopee.vn/4VdeZE6ph8"},
+  {"ten": "Bộ 10 móc bọc nhung chống trượt xoay 360°", "gia": "95.000đ", "giaCu": "", "nhom": "giatPhoi", "icon": "moc", "ghiChu": "Móc bọc nhung, áo không tuột khỏi móc. Có người chê lông nhung bám lên áo màu tối.", "the": ["4.9★ · 6k+ đã bán"], "link": "https://s.shopee.vn/4LKEMv7T27"},
+  {"ten": "Móc gỗ treo áo vest vai rộng", "gia": "34.000đ", "giaCu": "", "nhom": "giatPhoi", "icon": "moc", "ghiChu": "Móc gỗ vai rộng cho vest, áo khoác, giữ form vai.", "the": ["4.9★ · 5k+ đã bán"], "link": "https://s.shopee.vn/qkMCUKn8S"},
+  {"ten": "Túi hút chân không đựng chăn màn, quần áo", "gia": "23.000đ", "giaCu": "", "nhom": "sapXep", "icon": "hop", "ghiChu": "Túi hút chân không kèm bơm tay, cất chăn đông, đồ trái mùa. Đồ phải khô hẳn mới hút.", "the": ["4.9★ · 10k+ đã bán"], "link": "https://s.shopee.vn/gQw0BLQTR"},
+  {"ten": "Hộp đựng đồ lót chia ngăn có nắp Deli", "gia": "9.300đ", "giaCu": "", "nhom": "sapXep", "icon": "hop", "ghiChu": "Hộp chia ngăn có nắp cho đồ lót, tất. Rẻ; vài hộp giao bị bụi.", "the": ["4.9★ · 50k+ đã bán"], "link": "https://s.shopee.vn/1gJTC2PBoj"},
+  {"ten": "Túi hút ẩm treo tủ 500ml", "gia": "5.900đ", "giaCu": "", "nhom": "sapXep", "icon": "hop", "ghiChu": "Túi hút ẩm treo trong tủ quần áo, đầy nước thì thay.", "the": ["4.9★ · 10k+ đã bán"], "link": "https://s.shopee.vn/1W02zjPp9i"},
+  {"ten": "Chảo chống dính vân đá đáy từ Green Cook GCP02", "gia": "205.000đ", "giaCu": "", "nhom": "bep", "icon": "noi", "ghiChu": "Chảo chống dính vân đá, dùng được bếp từ. Lúc đầu có thể có mùi nhẹ, rửa vài lần là hết.", "the": ["5.0★ · 30k+ đã bán"], "link": "https://s.shopee.vn/1LgcnQQSUh"},
+  {"ten": "Bộ lau nhà có thùng vắt Parroti Pro PR01", "gia": "498.000đ", "giaCu": "", "nhom": "donDep", "icon": "chai", "ghiChu": "Bộ lau nhà kèm thùng vắt, không phải vắt tay. Có người chê cán hơi ngắn với người cao.", "the": ["4.9★ · 70k+ đã bán"], "link": "https://s.shopee.vn/3qNxm1GwQC"},
+  {"ten": "Giỏ nhựa có quai xách Inochi", "gia": "124.000đ", "giaCu": "", "nhom": "sapXep", "icon": "hop", "ghiChu": "Giỏ nhựa có quai: đi một vòng gom đồ để sai chỗ là nhà gọn.", "the": ["4.9★ · 50k+ đã bán"], "link": "https://s.shopee.vn/3g4XZiHZlB"},
+  {"ten": "Kệ sách thấp cho bé HOBBY TREE", "gia": "825.000đ", "giaCu": "", "nhom": "treEm", "icon": "ke", "ghiChu": "Kệ sách thấp bằng nhựa, bé tự lấy sách được. Nên kê sát tường.", "the": ["4.9★ · 3k+ đã bán"], "link": "https://s.shopee.vn/7fagL4STHk"},
+  {"ten": "Thùng nhựa PP đựng đồ chơi có nắp, bánh xe", "gia": "239.000đ", "giaCu": "", "nhom": "treEm", "icon": "hop", "ghiChu": "Thùng nhựa có nắp và bánh xe để đồ chơi. Xem kỹ kích thước, có người thấy nhỏ hơn mong đợi.", "the": ["4.9★ · 2k+ đã bán"], "link": "https://s.shopee.vn/7pu6XNRpwn"},
+  {"ten": "Sọt vải canvas đựng đồ đa năng", "gia": "46.000đ", "giaCu": "", "nhom": "treEm", "icon": "hop", "ghiChu": "Sọt vải canvas mềm, đựng thú bông hoặc đồ giặt. Vải hơi mỏng.", "the": ["5.0★ · 10k+ đã bán"], "link": "https://s.shopee.vn/7KxpwSTjxi"},
+  {"ten": "Giá treo quần áo Montessori cho bé", "gia": "431.000đ", "giaCu": "", "nhom": "treEm", "icon": "ke", "ghiChu": "Giá treo quần áo thấp bằng gỗ theo kiểu Montessori, để bé tự chọn đồ. Mẫu còn ít lượt bán.", "the": ["4.9★ · 488 đã bán"], "link": "https://s.shopee.vn/7VHG8lT6cl"},
+  {"ten": "Móc treo quần áo trẻ em hình nơ", "gia": "22.900đ", "giaCu": "", "nhom": "treEm", "icon": "moc", "ghiChu": "Móc treo cỡ nhỏ cho quần áo trẻ em, bán rất chạy.", "the": ["4.9★ · 300k+ đã bán"], "link": "https://s.shopee.vn/70KzXqV0dg"},
+  {"ten": "Giá phơi chữ A gấp gọn kiểu Hàn Quốc", "gia": "447.000đ", "giaCu": "", "nhom": "giatPhoi", "icon": "ke", "ghiChu": "Giá phơi chữ A gấp gọn, cất đi khi không dùng, hợp nhà nhỏ.", "the": ["5.0★ · 4k+ đã bán"], "link": "https://s.shopee.vn/80DWjgb26l"},
+  {"ten": "Cây phơi quần áo inox 3 tầng xoay 360°", "gia": "429.000đ", "giaCu": "", "nhom": "giatPhoi", "icon": "ke", "ghiChu": "Cây phơi inox 3 tầng xoay được, phơi trong nhà mùa mưa. Có người chê giao lâu.", "the": ["4.9★ · 9k+ đã bán"], "link": "https://s.shopee.vn/9APU7pWak0"},
+  {"ten": "Hộp thủy tinh chịu nhiệt Inochi Nikko", "gia": "40.000đ", "giaCu": "", "nhom": "bep", "icon": "hop", "ghiChu": "Hộp thủy tinh chịu nhiệt, hâm lò vi sóng được, không ám mùi. Kiểm tra nắp ngay khi nhận.", "the": ["5.0★ · 200k+ đã bán"], "link": "https://s.shopee.vn/9063vWXE4z"},
+  {"ten": "Quạt đứng 8 cánh Sunhouse SHD7346", "gia": "794.000đ", "giaCu": "", "nhom": "khongGian", "icon": "chai", "ghiChu": "Quạt đứng 8 cánh của Sunhouse, gió êm. Vài người thấy đế hơi nhẹ.", "the": ["4.9★ · 10k+ đã bán"], "link": "https://s.shopee.vn/8pmdjDXrPy"},
+  {"ten": "Quạt sạc tích điện Sunhouse SHD7116", "gia": "965.000đ", "giaCu": "", "nhom": "khongGian", "icon": "chai", "ghiChu": "Quạt tích điện dùng khi mất điện. Cổng sạc riêng, không phải USB, nên giữ kỹ dây sạc.", "the": ["4.9★ · 911 đã bán"], "link": "https://s.shopee.vn/8fTDWuYUkx"},
+  {"ten": "Móc inox treo sau cửa đa năng", "gia": "18.000đ", "giaCu": "", "nhom": "sapXep", "icon": "moc", "ghiChu": "Móc inox gác lên cánh cửa, không cần khoan. Hợp treo đồ mặc dở.", "the": ["4.9★ · 50k+ đã bán"], "link": "https://s.shopee.vn/6AlsYJq7mg"},
+  {"ten": "Bảng ghi chú nam châm dán tủ lạnh", "gia": "78.000đ", "giaCu": "", "nhom": "bep", "icon": "hop", "ghiChu": "Bảng nam châm dán tủ lạnh, tặng kèm 2 bút, ghi đồ cần mua.", "the": ["5.0★ · 1k+ đã bán"], "link": "https://s.shopee.vn/60SSM0ql7f"},
+  {"ten": "Rèm cửa ode đục lỗ sẵn chống nắng, cản sáng", "gia": "215.000đ", "giaCu": "", "nhom": "phongNgu", "icon": "khan", "ghiChu": "Rèm cản sáng đục lỗ sẵn, phòng ngủ trưa không bị chói.", "the": ["4.9★ · 20k+ đã bán"], "link": "https://s.shopee.vn/7AePk9mJku"},
+  {"ten": "Rèm 2 lớp may sẵn", "gia": "119.000đ", "giaCu": "", "nhom": "phongNgu", "icon": "khan", "ghiChu": "Rèm 2 lớp: voan mỏng và vải dày, vừa sáng vừa riêng tư. Đo kỹ cửa trước khi đặt.", "the": ["4.9★ · 4k+ đã bán"], "link": "https://s.shopee.vn/70KzXqmx5t"},
+  {"ten": "Đèn ngủ cắm điện mini, tự bật khi tối", "gia": "13.000đ", "giaCu": "", "nhom": "phongNgu", "icon": "chai", "ghiChu": "Đèn ngủ cắm điện, tự bật khi tối, ánh vàng nhẹ cho lối đi ban đêm.", "the": ["4.9★ · 10k+ đã bán"], "link": "https://s.shopee.vn/6q1ZLXnaQs"},
+  {"ten": "Bộ 10 kẹp miệng túi Yoko", "gia": "30.000đ", "giaCu": "", "nhom": "bep", "icon": "moc", "ghiChu": "Bộ 10 kẹp miệng túi Yoko (Inochi). Kẹp chắc với túi mỏng.", "the": ["4.9★ · 10k+ đã bán"], "link": "https://s.shopee.vn/5VWBlJzj0g"},
+  {"ten": "Kệ úp bát 2 tầng thép carbon VIE", "gia": "179.000đ", "giaCu": "", "nhom": "bep", "icon": "ke", "ghiChu": "Kệ 2 tầng có khay hứng nước, gọn hơn rổ úp bát.", "the": ["4.9★ · 5k+ đã bán"], "link": "https://s.shopee.vn/30oq5qbRYD"},
+  {"ten": "Miếng rửa chén 3M Scotch-Brite không trầy", "gia": "35.000đ", "giaCu": "", "nhom": "bep", "icon": "khan", "ghiChu": "Mặt hạt nổi, cọ sạch mà không xước nồi chảo chống dính.", "the": ["5.0★ · 30k+ đã bán"], "link": "https://s.shopee.vn/2qVP9XaF10"},
+  {"ten": "Hộp vải chia ngăn kéo SETHOME 11 ngăn", "gia": "130.000đ", "giaCu": "", "nhom": "sapXep", "icon": "hop", "ghiChu": "Chia ngăn kéo quần áo. Ngăn hơi nhỏ, không vừa quần jean.", "the": ["4.9★ · 20k+ đã bán"], "link": "https://s.shopee.vn/9pfAqOeeSR"},
+  {"ten": "Bột vệ sinh lồng máy giặt ASAKI", "gia": "55.000đ", "giaCu": "", "nhom": "giatPhoi", "icon": "hop", "ghiChu": "Tẩy cặn bẩn, mùi hôi trong lồng giặt, nên dùng mỗi tháng.", "the": ["4.9★ · 100k+ đã bán"], "link": "https://s.shopee.vn/2qVPtXc4tC"},
+  {"ten": "Túi zip chỉ đỏ bảo quản thực phẩm", "gia": "55.900đ", "giaCu": "", "nhom": "bep", "icon": "hop", "ghiChu": "Túi zip dày, giữ bánh mì, cấp đông thịt cá.", "the": ["4.9★ · 1tr+ đã bán"], "link": "https://s.shopee.vn/2gBzhEciEB"},
+  {"ten": "Nồi cơm điện SmartChoice 1.2L", "gia": "729.000đ", "giaCu": "", "nhom": "bep", "icon": "noi", "ghiChu": "Nồi 1.2L hợp nhà 2–4 người.", "the": ["4.9★ · 10k+ đã bán"], "link": "https://s.shopee.vn/2VsZUvdLZA"},
+  {"ten": "Túi bạt đựng chăn ga có khóa", "gia": "34.000đ", "giaCu": "", "nhom": "sapXep", "icon": "hop", "ghiChu": "Túi mềm có khóa kéo, cất chăn ga gọn gàng. Là túi, không phải hộp cứng.", "the": ["4.9★ · 20k+ đã bán"], "link": "https://s.shopee.vn/2LZ9Icdyu9"},
+  {"ten": "Dây dán Velcro cố định dây điện", "gia": "13.900đ", "giaCu": "", "nhom": "sapXep", "icon": "moc", "ghiChu": "Bó gọn dây điện, dây sạc; dùng lại được nhiều lần.", "the": ["4.9★ · 10k+ đã bán"], "link": "https://s.shopee.vn/2LZ9IeGYXo"},
+  {"ten": "Cây lau nhà phẳng KITIMOP", "gia": "175.000đ", "giaCu": "", "nhom": "donDep", "icon": "chai", "ghiChu": "Cán dài, lau không phải cúi; bông lau thay được.", "the": ["4.9★ · 200k+ đã bán"], "link": "https://s.shopee.vn/2VsZUxFvCr"},
+  {"ten": "Dung dịch tẩy keo Xetabon", "gia": "29.900đ", "giaCu": "", "nhom": "donDep", "icon": "chai", "ghiChu": "Gỡ nhãn dán, keo thừa trên kính, nhựa.", "the": ["4.9★ · 5k+ đã bán"], "link": "https://s.shopee.vn/20wIu2HpDm"},
+  {"ten": "Hộp bảo quản rau thơm 2 lớp có rổ thoát nước", "gia": "20.600đ", "giaCu": "", "nhom": "bep", "icon": "hop", "ghiChu": "Rổ thoát nước bên trong, rau thơm tươi lâu hơn trong tủ lạnh.", "the": ["4.9★ · 20k+ đã bán"], "link": "https://s.shopee.vn/2BFj6LHBsp"},
+  {"ten": "Thước thủy TOTAL", "gia": "42.000đ", "giaCu": "", "nhom": "khongGian", "icon": "ke", "ghiChu": "Treo kệ, treo tranh thẳng hàng ngay lần đầu.", "the": ["5.0★ · 10k+ đã bán"], "link": "https://s.shopee.vn/1gJSVQJ5tk"},
+  {"ten": "Pittong thông bồn cầu", "gia": "38.900đ", "giaCu": "", "nhom": "donDep", "icon": "chai", "ghiChu": "Món nên có sẵn trong nhà tắm, thử trước khi gọi thợ.", "the": ["4.9★ · 10k+ đã bán"], "link": "https://s.shopee.vn/7fafeZoLXp"},
+  {"ten": "Đá mài dao 2 mặt", "gia": "30.000đ", "giaCu": "", "nhom": "bep", "icon": "hop", "ghiChu": "Mài dao tại nhà. Đá mòn dần theo thời gian.", "the": ["4.9★ · 8k+ đã bán"], "link": "https://s.shopee.vn/7VHFSGoyso"},
+  {"ten": "Hộp đựng túi nilon dán tường", "gia": "30.000đ", "giaCu": "", "nhom": "sapXep", "icon": "hop", "ghiChu": "Gom túi nilon gọn một chỗ, rút ra từng cái.", "the": ["4.9★ · 10k+ đã bán"], "link": "https://s.shopee.vn/7KxpFxpcDn"},
+  {"ten": "Khay đá silicon 14 viên có nắp", "gia": "17.000đ", "giaCu": "", "nhom": "bep", "icon": "hop", "ghiChu": "Có nắp nên đá không ám mùi tủ đông.", "the": ["4.9★ · 400k+ đã bán"], "link": "https://s.shopee.vn/5q91TCvKGW"},
+  {"ten": "Ly giữ nhiệt TYESO inox 304", "gia": "295.000đ", "giaCu": "", "nhom": "bep", "icon": "chai", "ghiChu": "Giữ lạnh, giữ nóng tốt. Nắp hơi cứng lúc đầu.", "the": ["5.0★ · 50k+ đã bán"], "link": "https://s.shopee.vn/5fpbGtvxbV"},
+  {"ten": "Đèn LED cảm biến chuyển động dán tường", "gia": "48.000đ", "giaCu": "", "nhom": "anToan", "icon": "chai", "ghiChu": "Tự sáng khi có người đi qua, hợp hành lang, cầu thang, lối ra nhà vệ sinh.", "the": ["5.0★ · 100k+ đã bán"], "link": "https://s.shopee.vn/40hMYJuoOz"},
+  {"ten": "Khay gom dây điện dưới bàn", "gia": "", "giaCu": "", "nhom": "sapXep", "icon": "hop", "ghiChu": "Gom ổ cắm, dây điện dưới bàn làm việc cho gọn.", "the": [], "link": "https://s.shopee.vn/5AtJuf4oZU"},
+  {"ten": "Bộ túi phân loại hành lý du lịch", "gia": "", "giaCu": "", "nhom": "sapXep", "icon": "hop", "ghiChu": "Chia quần áo, đồ lặt vặt theo túi, mở vali là thấy.", "the": [], "link": "https://s.shopee.vn/2gByxEasLz"},
+  {"ten": "Thìa, đũa silicon chịu nhiệt", "gia": "", "giaCu": "", "nhom": "bep", "icon": "moc", "ghiChu": "Không xước lớp chống dính, giúp chảo bền hơn.", "the": [], "link": "https://s.shopee.vn/1BDlQleM9"},
+  {"ten": "Cây lăn lông quần áo", "gia": "", "giaCu": "", "nhom": "donDep", "icon": "moc", "ghiChu": "Loại lăn giấy, lăn xong bóc lớp mới; tiện cho nhà nuôi thú cưng.", "the": [], "link": "https://s.shopee.vn/50Ztk9r0N9"},
+  {"ten": "Bàn chải chà ron gạch", "gia": "", "giaCu": "", "nhom": "donDep", "icon": "moc", "ghiChu": "Đầu nhỏ, lông cứng vừa, cán dài đỡ khom lưng.", "the": [], "link": "https://s.shopee.vn/4LKCwvtXj5"},
+  {"ten": "Giá kê màn hình có ngăn", "gia": "", "giaCu": "", "nhom": "khongGian", "icon": "ke", "ghiChu": "Đưa màn hình lên ngang tầm mắt, đỡ mỏi cổ khi ngồi máy lâu.", "the": [], "link": "https://s.shopee.vn/1BDlAOU3T"},
+  {"ten": "Kệ sắt 3 tầng mặt lưới cho chậu cây", "gia": "", "giaCu": "", "nhom": "khongGian", "icon": "ke", "ghiChu": "Tận dụng chiều cao ban công nhỏ để xếp chậu cây.", "the": [], "link": "https://s.shopee.vn/9fLjIl2OcD"},
+  {"ten": "Đèn dây năng lượng mặt trời", "gia": "", "giaCu": "", "nhom": "khongGian", "icon": "cay", "ghiChu": "Không cần đi dây điện, cắm cọc ngoài ban công là xong.", "the": [], "link": "https://s.shopee.vn/9V2J6S31xC"},
+  {"ten": "Đất trồng cây GreenHome", "gia": "", "giaCu": "", "nhom": "khongGian", "icon": "cay", "ghiChu": "Đất trộn sẵn cho cây mới giâm, cây cảnh trong nhà.", "the": [], "link": "https://s.shopee.vn/9fLjJ5Lx8b"},
+  {"ten": "Kẹp miệng túi thực phẩm Inochi", "gia": "", "giaCu": "", "nhom": "bep", "icon": "moc", "ghiChu": "Kẹp kín túi bánh kẹo, gia vị đã mở.", "the": [], "link": "https://s.shopee.vn/3B8FWxpfIs"},
+  {"ten": "Kệ góc dán tường nhà tắm", "gia": "", "giaCu": "", "nhom": "donDep", "icon": "ke", "ghiChu": "Tận dụng góc chết trong nhà tắm, không cần khoan.", "the": [], "link": "https://s.shopee.vn/Lo49mNDNV"},
+  {"ten": "Nẹp bọc góc bàn, góc tủ", "gia": "", "giaCu": "", "nhom": "anToan", "icon": "hop", "ghiChu": "Bọc góc nhọn cho nhà có trẻ nhỏ.", "the": [], "link": "https://s.shopee.vn/W7UMLjkLG"},
+  {"ten": "Chốt an toàn ngăn kéo, cánh tủ", "gia": "", "giaCu": "", "nhom": "anToan", "icon": "hop", "ghiChu": "Bé không tự mở được ngăn kéo, tủ để đồ nguy hiểm.", "the": [], "link": "https://s.shopee.vn/Lo4A2kNgF"},
+  {"ten": "Nút bịt ổ điện an toàn", "gia": "", "giaCu": "", "nhom": "anToan", "icon": "hop", "ghiChu": "Che ổ điện trong tầm tay trẻ nhỏ.", "the": [], "link": "https://s.shopee.vn/2BFiLPdOxc"},
+  {"ten": "Thanh vịn nhà tắm", "gia": "", "giaCu": "", "nhom": "anToan", "icon": "moc", "ghiChu": "Cho nhà có người lớn tuổi. Nên chọn loại bắt vít, đừng dùng loại hút chân không.", "the": [], "link": "https://s.shopee.vn/4B0mkcuB40"}
 ];
 
 /* ===== KHÔNG CẦN SỬA TỪ ĐÂY ===== */
@@ -410,6 +492,7 @@ function chips(){
   const el=document.getElementById('chips');
   const cs=[{id:"tatCa",ten:"Tất cả",n:SAN_PHAM.length},...NHOM.map(n=>({...n,n:SAN_PHAM.filter(s=>s.nhom===n.id).length})).filter(n=>n.n)];
   el.innerHTML=cs.map(n=>`<button class="chip" data-id="${n.id}" aria-pressed="${n.id===fDo}">${esc(n.ten)}<span class="n">${n.n}</span></button>`).join('');
+  const act=el.querySelector('.chip[aria-pressed="true"]'); if(act&&el.scrollWidth>el.clientWidth) el.scrollLeft=act.offsetLeft-(el.clientWidth-act.offsetWidth)/2;
   el.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{fDo=b.dataset.id;chips();drawDo();window.scrollTo({top:document.querySelector('nav').offsetTop,behavior:'smooth'});});
 }
 function drawDo(){
