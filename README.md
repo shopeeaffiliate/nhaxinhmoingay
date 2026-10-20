@@ -2,7 +2,7 @@
 
 Trang web nhỏ ghi lại những món đồ gia dụng mình đã mua, đã dùng thật và thấy đáng tiền. Món nào có nhược điểm mình cũng ghi rõ.
 
-👉 Xem trang: https://github.com/NguyenLeCongNguyen/nhaxinhmoingay
+👉 Xem trang: https://github.com/shopeeaffiliate/nhaxinhmoingay
 
 ## Có gì trong trang
 - Những món chia theo nhóm: Bếp núc, Dọn dẹp, Sắp xếp, Giặt phơi, Không gian sống
